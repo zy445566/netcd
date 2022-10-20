@@ -15,6 +15,7 @@ const serviceMap = {
 }
 export class Netcd {
     clientConfig:ClientConfig
+    serviceInstanceMap:Map<string,any>=new Map()
     constructor(clientConfig:ClientConfig) {
         this.clientConfig = clientConfig
     }
@@ -28,10 +29,14 @@ export class Netcd {
         if(!serviceMap[clientName]) {
             throw new Error(`clientName only have ${Object.keys(serviceMap).join()}`)
         }
-        return new serviceMap[clientName](
+        if(this.serviceInstanceMap.has(clientName)) {
+            return this.serviceInstanceMap.get(clientName)
+        }
+        this.serviceInstanceMap.set(clientName, new serviceMap[clientName](
             this.randomEndpoint(), 
             grpc.credentials.createInsecure()
-        )
+        ))
+        return this.serviceInstanceMap.get(clientName)
     }
     
 }
