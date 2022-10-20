@@ -1,6 +1,6 @@
 {
   "name": "netcd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "netcd is the official node.js client for etcd v3.",
   "main": "index.js",
   "scripts": {
