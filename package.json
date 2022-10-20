@@ -1,12 +1,12 @@
 {
   "name": "netcd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "netcd is the official node.js client for etcd v3.",
-  "main": "index.js",
+  "main": "./build/index.js",
   "scripts": {
     "build": "rm -rf ./build/ && cp -rf ./src/ ./build/ && npx tsc",
     "test": "npm run build && npx mocha ./build/test/*.test.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run test"
   },
   "repository": {
     "type": "git",
