@@ -27,7 +27,7 @@ authClient.Authenticate({"name": "root", "password": "a123456"},(err,authData)=>
     })
 
     // get the key
-    client.Range({key:btoa('test_key')},meta,(err,data)=>{
+    client.Range({key:btoa('test_key'),rangeEnd:btoa('test_key')},meta,(err,data)=>{
         console.log(err,data)
     })
 
